@@ -1,0 +1,18 @@
+{
+  "name": "nodehugo03",
+  "version": "1.0.0",
+  "description": "Programa de tablas de multiplicar Hugo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hugo J Ned",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

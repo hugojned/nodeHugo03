@@ -1,8 +1,46 @@
 // librería filesystem node
 const fs = require('fs');
+const colors = require('colors');
 
-const crearArchivo = async( base = 1 ) => {
+//                                 Valores por defecto
+const crearArchivo = async( base = 1, listar = false, numlim = 10 ) => {
 
+  
+    //EN USO
+    //#region Ejemplo promesa 2 (con async en la parte del objeto)
+    try{
+
+        
+        let salida = '';
+        let consola = '';
+
+        for ( let i = 1; i <= numlim; i++ ){
+            salida += `${ base } x ${ i } = ${ base * i }\n`;
+            consola += `${ base } ${ 'x'.magenta } ${ i } ${ '='.green } ${ base * i }\n`
+        }
+        
+        //Cualquier valor sin inicializar en un if es true, caso contrario se usa '!' = !variable
+        if( listar ){
+            console.log('========================'.america);
+            console.log('      Tabla del:', colors.red( base ) );
+            console.log('========================'.america);
+            console.log(consola);
+        }
+        
+        //ARCHIVO
+        fs.writeFileSync( `./archivos/tabla-${ base }.txt`, salida );
+
+        return `tabla-${ base }.txt`;
+
+
+    }
+    catch( err ){
+        throw err;
+    }
+    
+    //#endregion
+
+    
     //#region Ejemplo promesa 1 (sin async ni await)
     
     /*
@@ -27,32 +65,6 @@ const crearArchivo = async( base = 1 ) => {
         })
     */
 
-    //#endregion
-
-
-    //#region Ejemplo promesa 2 (con async en la parte del objeto)
-    try{
-        console.log('========================');
-        console.log('      Tabla del:', base);
-        console.log('========================');
-
-        let salida = '';
-
-
-        for ( let i = 1; i <= 10; i++ ){
-            salida += `${ base } x ${ i } = ${ base * i }\n`;
-        }
-        
-        console.log(salida);
-
-        fs.writeFileSync( `tabla-${ base }.txt`, salida );
-
-        return `tabla-${ base }.txt`;
-    }
-    catch( err ){
-        throw err;
-    }
-    
     //#endregion
 
 
